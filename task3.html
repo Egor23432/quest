@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перекур</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+        .task-content {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .code-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .code-input {
+            width: 200px;
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .submit-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 250px;
+        }
+        .error {
+            color: #ffdd59;
+            height: 25px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Перекур</h1>
+        
+        <div class="task-content">
+            <!-- ОПИСАНИЕ ЗАДАНИЯ -->
+            <p>Для полного счастья осталось только покурить. Позови с собой менеджера, не курить же одной.</p>
+            <!-- КОНЕЦ ОПИСАНИЯ -->
+        </div>
+        
+        <div class="code-form">
+            <input type="text" 
+                   class="code-input" 
+                   placeholder="0000" 
+                   maxlength="4"
+                   inputmode="numeric"
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <button class="submit-btn">Проверить код</button>
+            <div class="error" id="error"></div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.submit-btn').addEventListener('click', function() {
+            const code = document.querySelector('.code-input').value;
+            const errorElement = document.getElementById('error');
+            
+            // ЗАМЕНИТЕ "1234" НА РЕАЛЬНЫЙ КОД ДЛЯ ЭТОГО ЗАДАНИЯ
+            if(code === "7332") { 
+                // ДЛЯ ПОСЛЕДНЕГО ЗАДАНИЯ ИСПОЛЬЗУЙТЕ "final.html"
+                window.location.href = "task4.html";
+            } else {
+                errorElement.textContent = "Неверный код, попробуй ещё раз!";
+            }
+        });
+        
+        // Ввод по Enter
+        document.querySelector('.code-input').addEventListener('keyup', function(e) {
+            if(e.key === 'Enter') document.querySelector('.submit-btn').click();
+        });
+    </script>
+</body>
+</html>
